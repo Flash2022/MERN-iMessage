@@ -6,16 +6,6 @@ import cors from "cors";
 import path from "path";
 import mongoData from "./mongoData.js";
 
-//serve static assests
-if(process.env.NODE_ENV === 'production'){
-  //static folder
-  app.use(express.static('client/build'));
-
-  app.get('/', (req,res) => {
-    res.sendFile(path.resolve(__dirname,'client','build', 'index.html'))
-  });
-
-}
 
 // app config
 const app = express();
@@ -33,6 +23,17 @@ const pusher = new Pusher({
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "/client/build")));
+
+//static files
+if(process.env.NODE_ENV === 'production'){
+  //static folder
+  app.use(express.static('client/build'));
+
+  app.get('/', (req,res) => {
+    res.sendFile(path.resolve(__dirname,'client','build', 'index.html'))
+  });
+
+}
 
 // db config
 const mongoURI =
