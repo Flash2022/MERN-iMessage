@@ -72,5 +72,3 @@ You will see the build errors and warnings in the console.
 
 Try hosted app [here.](https://welcometoimessage.herokuapp.com)
 
-
-
